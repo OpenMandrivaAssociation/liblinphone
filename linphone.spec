@@ -16,9 +16,6 @@ Group:		Communications
 Url:		http://www.linphone.org/
 Source0:	http://download.savannah.gnu.org/releases/linphone/stable/sources/linphone-%{version}.tar.gz
 # Source1:	http://download.savannah.gnu.org/releases/linphone/stable/sources/linphone-%{version}.tar.gz.sig
-Source2:	%{name}48.png
-Source3:	%{name}32.png
-Source4:	%{name}16.png
 Patch1:		linphone-3.12.0-cmake-config-location.patch
 # (wally) originally from OpenSUSE, slightly modified
 Patch2:	linphone-fix-pkgconfig.patch
