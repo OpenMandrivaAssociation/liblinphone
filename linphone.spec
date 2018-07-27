@@ -21,7 +21,6 @@ Patch1:		linphone-3.12.0-cmake-config-location.patch
 Patch2:	linphone-fix-pkgconfig.patch
 BuildRequires:	cmake
 BuildRequires:	desktop-file-utils
-BuildRequires:	gtk-doc
 BuildRequires:	intltool
 BuildRequires:	gettext
 BuildRequires:	ffmpeg-devel
@@ -35,8 +34,6 @@ BuildRequires:	pkgconfig(alsa)
 BuildRequires:	pkgconfig(belle-sip)
 BuildRequires:	pkgconfig(belcard)
 BuildRequires:	pkgconfig(libbzrtp)
-BuildRequires:	pkgconfig(glib-2.0)
-BuildRequires:	pkgconfig(gtk+-2.0)
 BuildRequires:	pkgconfig(libosip2)
 BuildRequires:	pkgconfig(libpulse)
 BuildRequires:	pkgconfig(libv4l1)
@@ -45,9 +42,11 @@ BuildRequires:	pkgconfig(glew)
 BuildRequires:	pkgconfig(mediastreamer)
 BuildRequires:	pkgconfig(ortp) >= 0.23.0
 BuildRequires:	pkgconfig(speex)
+BuildRequires:	pkgconfig(sqlite3)
 BuildRequires:	pkgconfig(theora)
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(xext)
+BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:	pkgconfig(xv)
 BuildRequires:	bctoolbox-static-devel
 
