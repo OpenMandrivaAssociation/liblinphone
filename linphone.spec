@@ -19,7 +19,7 @@ Source0:	http://download.savannah.gnu.org/releases/linphone/stable/sources/linph
 Patch1:		linphone-3.12.0-cmake-config-location.patch
 # (wally) originally from OpenSUSE, slightly modified
 Patch2:	linphone-fix-pkgconfig.patch
-
+BuildRequires:	cmake
 BuildRequires:	desktop-file-utils
 BuildRequires:	gtk-doc
 BuildRequires:	intltool
