@@ -154,8 +154,9 @@ export CXX=g++
     -DENABLE_TOOLS:BOOL=NO \
     -DCONFIG_PACKAGE_LOCATION:PATH=%{_libdir}/cmake/Linphone
 
-%make
+make
 
+zoner
 %install
 %makeinstall_std -C build
 
