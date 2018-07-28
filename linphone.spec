@@ -150,6 +150,7 @@ export CC=gcc
 export CXX=g++
 
 %cmake \
+    -DENABLE_STRICT=NO \
     -DENABLE_STATIC:BOOL=NO \
     -DENABLE_ROOTCA_DOWNLOAD:BOOL=NO \
     -DENABLE_GTK_UI:BOOL=NO \
