@@ -60,7 +60,7 @@ environments.
 
 %package cli
 Summary:        Command Line Interface for %{name}
-Group:          Communications/Telephony
+Group:          Communications
 Requires:       liblinphone-data >= %{version}-%{release}
 Conflicts:      %{name} < 3.12.0-1
 
@@ -77,7 +77,7 @@ environments.
 
 %package -n     liblinphone-data
 Summary:        Data files for %{name}
-Group:          Communications/Telephony
+Group:          Communications
 BuildArch:      noarch
 Conflicts:      %{name} < 3.12.0-1
 
