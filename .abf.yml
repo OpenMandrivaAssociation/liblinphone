@@ -1,7 +1,2 @@
-removed_sources:
-  linphone-3.5.2.tar.gz: d0dde9d421b7cf6893c8e5acb969d5bd4a04a231
-  linphone-3.6.1.tar.gz: 3bba40df89443326261e2688f599c31ff156580e
-  linphone-3.7.0.tar.gz: 19e8e8c047a8b74aa06c73d70b2aeac851203e47
-  linphone-3.9.1.tar.gz: 6214c4fc9fa856cabccc11e9e5bb3e5cbe55c840
 sources:
   linphone-3.12.0.tar.gz: 13724e17cfc436a0e4424b264a12164498b9e63f
