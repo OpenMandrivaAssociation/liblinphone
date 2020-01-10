@@ -143,7 +143,7 @@ Libraries and includes files for developing programs based on %{name}.
 %setup -q
 find '(' -name '*.c' -o -name '*.h' ')' -print0 | xargs -0 sed -i -e 's,\r$,,'
 
-%apply_patches
+%autopatch -p1
 
 %build
 export CC=gcc
