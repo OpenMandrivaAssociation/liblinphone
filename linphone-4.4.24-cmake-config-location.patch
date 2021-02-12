@@ -1,0 +1,26 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -397,7 +397,7 @@
+ endif()
+ 
+ include(CMakePackageConfigHelpers)
+-set(CONFIG_PACKAGE_LOCATION "${CMAKE_INSTALL_DATADIR}/Linphone/cmake")
++set(CONFIG_PACKAGE_LOCATION "${CMAKE_INSTALL_DATADIR}/cmake/Linphone")
+ 
+ write_basic_package_version_file(
+ 	"${CMAKE_CURRENT_BINARY_DIR}/LinphoneConfigVersion.cmake"
+--- a/wrappers/cpp/CMakeLists.txt
++++ b/wrappers/cpp/CMakeLists.txt
+@@ -98,10 +98,10 @@
+ 
+ install(EXPORT LinphoneCxxTargets
+ 	FILE LinphoneCxxTargets.cmake
+-	DESTINATION "${CMAKE_INSTALL_DATADIR}/LinphoneCxx/cmake"
++	DESTINATION "${CMAKE_INSTALL_DATADIR}/cmake/LinphoneCxx"
+ )
+ install(FILES
+ 	"${CMAKE_CURRENT_BINARY_DIR}/LinphoneCxxConfig.cmake"
+ 	"${CMAKE_CURRENT_BINARY_DIR}/LinphoneCxxVersion.cmake"
+-	DESTINATION "${CMAKE_INSTALL_DATADIR}/LinphoneCxx/cmake"
++	DESTINATION "${CMAKE_INSTALL_DATADIR}/cmake/LinphoneCxx"
+ )

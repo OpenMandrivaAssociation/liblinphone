@@ -1,0 +1,18 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -118,11 +118,11 @@
+ find_package(BelleSIP CONFIG REQUIRED)
+ find_package(Mediastreamer2 CONFIG REQUIRED)
+ find_package(ortp CONFIG REQUIRED)
+-find_package(bctoolbox 0.0.3 CONFIG REQUIRED OPTIONAL_COMPONENTS tester)
++find_package(bctoolbox CONFIG REQUIRED OPTIONAL_COMPONENTS tester)
+ find_package(belr CONFIG REQUIRED)
+ 
+ # the version shuold be defined here because bctoolbox is required
+-bc_compute_lib_version(LIB_VERSION "4.4.0")
++bc_compute_lib_version(LIB_VERSION "4.4.0" "4.4.0")
+ project(linphone VERSION ${LIB_VERSION})
+ 
+ set(LINPHONE_MAJOR_VERSION ${PROJECT_VERSION_MAJOR})
+
+

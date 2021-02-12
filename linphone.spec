@@ -9,15 +9,13 @@
 Summary:	Voice over IP Application
 Name:		linphone
 Version:	4.4.24
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Communications
 URL:		http://www.linphone.org
 Source0: 	https://gitlab.linphone.org/BC/public/lib%{name}/-/archive/%{version}/lib%{name}-%{version}.tar.bz2
-#Patch0:		linphone-3.12.0-cmake-config-location.patch
 Patch0:		linphone-4.4.24-cmake-config-location.patch
 # (wally) originally from OpenSUSE, slightly modified
-#Patch1:		linphone-fix-pkgconfig.patch
 Patch1:		linphone-4.4.24-fix-pkgconfig.patch
 Patch2:		linphone-4.4.24-fix_xds_version.patch
 Patch3:		linphone-4.4.24-dont_check_bctools_version.patch
