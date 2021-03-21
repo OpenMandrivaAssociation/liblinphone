@@ -26,6 +26,7 @@ BuildRequires:	cmake(belcard)
 BuildRequires:	cmake(bellesip)
 BuildRequires:	cmake(belr)
 BuildRequires:	cmake(bzrtp)
+BuildRequires:	boost-devel
 BuildRequires:  lime-devel
 BuildRequires:	cmake(mediastreamer2)
 BuildRequires:	ninja
