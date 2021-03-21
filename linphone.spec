@@ -1,5 +1,5 @@
-%define _disable_ld_no_undefined 1
-%define _disable_lto 1
+#define _disable_ld_no_undefined 1
+#define _disable_lto 1
 
 %define major 10
 %define libname	%mklibname %{name} %{major}
@@ -8,8 +8,8 @@
 
 Summary:	Voice over IP Application
 Name:		linphone
-Version:	4.4.24
-Release:	2
+Version:	4.4.35
+Release:	1
 License:	GPLv2+
 Group:		Communications
 URL:		http://www.linphone.org
@@ -26,15 +26,17 @@ BuildRequires:	cmake(belcard)
 BuildRequires:	cmake(bellesip)
 BuildRequires:	cmake(belr)
 BuildRequires:	cmake(bzrtp)
-BuildRequires:  cmake(lime)
+BuildRequires:	boost-devel
+BuildRequires:  lime-devel
 BuildRequires:	cmake(mediastreamer2)
 BuildRequires:	ninja
 BuildRequires:	pkgconfig(bctoolbox)
 BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:	pkgconfig(sqlite3)
+BuildRequires:	pkgconfig(udev)
 BuildRequires:  pkgconfig(xerces-c)
 BuildRequires:	pkgconfig(zlib)
-BuildRequires:	python3
+BuildRequires:	python
 BuildRequires:	python3dist(pystache)
 BuildRequires:	python3dist(six)
 BuildRequires:  soci-devel
