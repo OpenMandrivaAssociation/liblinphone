@@ -26,7 +26,7 @@ BuildRequires:	cmake(belcard)
 BuildRequires:	cmake(bellesip)
 BuildRequires:	cmake(belr)
 BuildRequires:	cmake(bzrtp)
-BuildRequires:  cmake(lime)
+BuildRequires:  lime-devel
 BuildRequires:	cmake(mediastreamer2)
 BuildRequires:	ninja
 BuildRequires:	pkgconfig(bctoolbox)
@@ -34,7 +34,7 @@ BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:	pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(xerces-c)
 BuildRequires:	pkgconfig(zlib)
-BuildRequires:	python3
+BuildRequires:	python
 BuildRequires:	python3dist(pystache)
 BuildRequires:	python3dist(six)
 BuildRequires:  soci-devel
