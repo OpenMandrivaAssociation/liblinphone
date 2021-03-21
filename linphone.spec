@@ -1,5 +1,5 @@
-%define _disable_ld_no_undefined 1
-%define _disable_lto 1
+#define _disable_ld_no_undefined 1
+#define _disable_lto 1
 
 %define major 10
 %define libname	%mklibname %{name} %{major}
@@ -33,6 +33,7 @@ BuildRequires:	ninja
 BuildRequires:	pkgconfig(bctoolbox)
 BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:	pkgconfig(sqlite3)
+BuildRequires:	pkgconfig(udev)
 BuildRequires:  pkgconfig(xerces-c)
 BuildRequires:	pkgconfig(zlib)
 BuildRequires:	python
