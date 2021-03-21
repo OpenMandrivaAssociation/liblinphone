@@ -8,8 +8,8 @@
 
 Summary:	Voice over IP Application
 Name:		linphone
-Version:	4.4.24
-Release:	2
+Version:	4.4.35
+Release:	1
 License:	GPLv2+
 Group:		Communications
 URL:		http://www.linphone.org
