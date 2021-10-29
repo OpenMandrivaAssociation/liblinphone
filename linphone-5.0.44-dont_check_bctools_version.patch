@@ -1,0 +1,12 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -136,7 +136,7 @@
+ 	find_package(BelleSIP CONFIG REQUIRED)
+ 	find_package(Mediastreamer2 CONFIG REQUIRED)
+ 	find_package(ortp CONFIG REQUIRED)
+-	find_package(bctoolbox 0.0.3 CONFIG REQUIRED OPTIONAL_COMPONENTS tester)
++   find_package(bctoolbox CONFIG REQUIRED OPTIONAL_COMPONENTS tester)
+ 	find_package(belr CONFIG REQUIRED)
+ endif()
+ 
+

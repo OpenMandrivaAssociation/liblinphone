@@ -1,4 +1,4 @@
-#define _disable_ld_no_undefined 1
+%define _disable_ld_no_undefined 1
 #define _disable_lto 1
 
 %define major 10
@@ -8,17 +8,17 @@
 
 Summary:	Voice over IP Application
 Name:		linphone
-Version:	4.4.35
+Version:	5.0.44
 Release:	1
 License:	GPLv2+
 Group:		Communications
 URL:		http://www.linphone.org
-Source0: 	https://gitlab.linphone.org/BC/public/lib%{name}/-/archive/%{version}/lib%{name}-%{version}.tar.bz2
-Patch0:		linphone-4.4.24-cmake-config-location.patch
+Source0:	https://gitlab.linphone.org/BC/public/lib%{name}/-/archive/%{version}/lib%{name}-%{version}.tar.bz2
+Patch0:		linphone-5.0.44-cmake-config-location.patch
 # (wally) originally from OpenSUSE, slightly modified
 Patch1:		linphone-4.4.24-fix-pkgconfig.patch
 Patch2:		linphone-4.4.24-fix_xds_version.patch
-Patch3:		linphone-4.4.24-dont_check_bctools_version.patch
+Patch3:		linphone-5.0.44-dont_check_bctools_version.patch
 
 BuildRequires:	cmake
 BuildRequires:	doxygen
@@ -26,20 +26,19 @@ BuildRequires:	cmake(belcard)
 BuildRequires:	cmake(bellesip)
 BuildRequires:	cmake(belr)
 BuildRequires:	cmake(bzrtp)
-BuildRequires:	boost-devel
-BuildRequires:  lime-devel
+BuildRequires:	cmake(jsoncpp)
+BuildRequires:	cmake(lime)
 BuildRequires:	cmake(mediastreamer2)
 BuildRequires:	ninja
 BuildRequires:	pkgconfig(bctoolbox)
 BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:	pkgconfig(sqlite3)
-BuildRequires:	pkgconfig(udev)
-BuildRequires:  pkgconfig(xerces-c)
+BuildRequires:	pkgconfig(xerces-c)
 BuildRequires:	pkgconfig(zlib)
-BuildRequires:	python
+BuildRequires:	python3
 BuildRequires:	python3dist(pystache)
 BuildRequires:	python3dist(six)
-BuildRequires:  soci-devel
+BuildRequires:	soci-devel
 BuildRequires:	xsd-devel
 
 %description
@@ -58,10 +57,10 @@ environments.
 #--------------------------------------------------------------------
 
 %package cli
-Summary:        Command Line Interface for %{name}
-Group:          Communications
-Requires:       lib%{name}-data >= %{version}-%{release}
-Conflicts:      %{name} < 3.12.0-1
+Summary:	Command Line Interface for %{name}
+Group:		Communications
+Requires:	lib%{name}-data >= %{version}-%{release}
+Conflicts:	%{name} < 3.12.0-1
 
 %description cli
 Linphone is an open source SIP Phone, available on mobile and desktop
@@ -75,17 +74,18 @@ environments.
 
 #--------------------------------------------------------------------
 
-%package -n     lib%{name}-data
-Summary:        Data files for %{name}
-Group:          Communications
-BuildArch:      noarch
-Conflicts:      %{name} < 3.12.0-1
+%package -n lib%{name}-data
+Summary:	Data files for %{name}
+Group:		Communications
+BuildArch:	noarch
+Conflicts:	%{name} < 3.12.0-1
 
 %description -n lib%{name}-data
 Linphone is an open source SIP Phone, available on mobile and desktop
 environments.
 
 %files -n lib%{name}-data
+%{_datadir}/belr/grammars/
 %{_datadir}/sounds/linphone/
 %{_datadir}/%{name}/rootca.pem
 
@@ -105,9 +105,9 @@ Primary library for %{name}.
 
 #--------------------------------------------------------------------
 
-%package -n     %{libname_linphonepp}
-Summary:        C++ wrapper library for %{name}
-Group:          System/Libraries
+%package -n %{libname_linphonepp}
+Summary:	C++ wrapper library for %{name}
+Group:		System/Libraries
 
 %description -n %{libname_linphonepp}
 C++ wrapper library for %{name}.
@@ -133,7 +133,6 @@ Libraries and includes files for developing programs based on %{name}.
 %{_includedir}/linphone++/
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
-%{_datadir}/belr/grammars/
 %{_datadir}/cmake/Linphone
 %{_datadir}/cmake/LinphoneCxx
 
@@ -156,5 +155,3 @@ Libraries and includes files for developing programs based on %{name}.
 %install
 %ninja_install -C build
 
-# remove unwanted docs, generated if doxygen is installed
-#rm -rf %{buildroot}%{_docdir}/ortp %{buildroot}%{_docdir}/mediastreamer* %{buildroot}%{_docdir}/%{name}*
