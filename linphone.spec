@@ -21,6 +21,7 @@ Patch2:		linphone-4.4.24-fix_xds_version.patch
 Patch3:		linphone-5.0.44-dont_check_bctools_version.patch
 
 BuildRequires:	cmake
+BuildRequires:	boost-devel
 BuildRequires:	doxygen
 BuildRequires:	cmake(belcard)
 BuildRequires:	cmake(bellesip)
