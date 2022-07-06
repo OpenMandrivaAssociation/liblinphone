@@ -1,4 +1,4 @@
-%define _disable_ld_no_undefined 1
+#define _disable_ld_no_undefined 1
 #define _disable_lto 1
 
 %define major 10
@@ -19,6 +19,7 @@ Patch0:		linphone-5.0.44-cmake-config-location.patch
 Patch1:		linphone-5.1.45-fix-pkgconfig.patch
 Patch2:		linphone-4.4.24-fix_xds_version.patch
 Patch3:		linphone-5.0.44-dont_check_bctools_version.patch
+Patch4:		linphone-5.1.45-port_to_python_3.11.patch
 
 BuildRequires:	cmake
 BuildRequires:	boost-devel
