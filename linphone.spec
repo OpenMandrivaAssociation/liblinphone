@@ -16,7 +16,7 @@ URL:		http://www.linphone.org
 Source0:	https://gitlab.linphone.org/BC/public/lib%{name}/-/archive/%{version}/lib%{name}-%{version}.tar.bz2
 Patch0:		linphone-5.0.44-cmake-config-location.patch
 # (wally) originally from OpenSUSE, slightly modified
-Patch1:		linphone-5.1.12-fix-pkgconfig.patch
+Patch1:		linphone-5.1.45-fix-pkgconfig.patch
 Patch2:		linphone-4.4.24-fix_xds_version.patch
 Patch3:		linphone-5.0.44-dont_check_bctools_version.patch
 
