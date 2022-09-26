@@ -1,0 +1,11 @@
+--- a/console/linphonec.c
++++ b/console/linphonec.c
+@@ -965,7 +965,7 @@
+  *
+  */
+ static int
+-linphonec_idle_call ()
++linphonec_idle_call (void)
+ {
+ 	LinphoneCore *opm=linphonec;
+ 
