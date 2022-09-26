@@ -9,3 +9,12 @@
  {
  	LinphoneCore *opm=linphonec;
  
+@@ -1274,7 +1274,7 @@
+  *	-1 on error
+  */
+ static int
+-handle_configfile_migration()
++handle_configfile_migration(void)
+ {
+ #if !defined(_WIN32_WCE)
+ 	char *old_cfg_gui;
