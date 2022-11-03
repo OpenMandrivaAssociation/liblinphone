@@ -1,12 +1,15 @@
 %define major 10
-%define libname	%mklibname %{name} %{major}
+%define libname	%mklibname %{name}
 %define devname %mklibname -d %{name}
-%define libname_linphonepp %mklibname %{name}++ %{major}
+%define libname_linphonepp %mklibname %{name}++
 
-%bcond_without	debug
-%bcond_with		db
-%bcond_with		ldap
-%bcond_with		static
+%bcond_without	assistant
+%bcond_with	debug
+%bcond_without	db
+%bcond_with	ldap
+%bcond_without	notify
+%bcond_with	static
+%bcond_with	tests
 
 Summary:	Voice over IP Application
 Name:		linphone
@@ -158,15 +161,15 @@ Libraries and includes files for developing programs based on %{name}.
 %cmake \
 	-DENABLE_STATIC:BOOL=%{?with_static:ON}%{?without_static:OFF} \
 	-DENABLE_DATE:BOOL=OFF \
-	-DENABLE_UNIT_TESTS:BOOL=OFF \
+	-DENABLE_UNIT_TESTS:BOOL=%{?with_tests:ON}%{?without_tests:OFF} \
 	-DENABLE_UPDATE_CHECK:BOOL=OFF \
 	-DENABLE_STRICT:BOOL=ON \
 	-DENABLE_UPDATE_CHECK:BOOL=OFF \
 	-DENABLE_DB_STORAGE:BOOL=%{?with_db:ON}%{?without_db:OFF} \
 	-DENABLE_LDAP:BOOL=%{?with_ldap:ON}%{?without_ldap:OFF} \
-	-DENABLE_ASSISTANT:BOOL=ON \
-	-DENABLE_NOTIFY:BOOL=ON \
-	-DENABLE_BUILD_VERBOSE:BOOL=ON \
+	-DENABLE_ASSISTANT:BOOL=%{?with_assistant:ON}%{?without_assistant:OFF} \
+	-DENABLE_NOTIFY:BOOL=%{?with_notify:ON}%{?without_notify:OFF} \
+	-DENABLE_BUILD_VERBOSE:BOOL=OFF \
 	-DENABLE_DEBUG_LOGS:BOOOL=%{?with_debug:ON}%{?without_debug:OFF} \
 	-G Ninja
 %ninja_build
