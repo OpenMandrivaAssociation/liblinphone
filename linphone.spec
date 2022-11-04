@@ -9,6 +9,7 @@
 %bcond_with	ldap
 %bcond_without	notify
 %bcond_with	static
+%bcond_with	strict
 %bcond_with	tests
 
 Summary:	Voice over IP Application
@@ -159,6 +160,7 @@ Libraries and includes files for developing programs based on %{name}.
 
 %build
 %cmake \
+	-DENABLE_STRICT:BOOL=%{?with_static:ON}%{?!with_static:OFF} \
 	-DENABLE_STATIC:BOOL=%{?with_static:ON}%{?without_static:OFF} \
 	-DENABLE_DATE:BOOL=OFF \
 	-DENABLE_UNIT_TESTS:BOOL=%{?with_tests:ON}%{?without_tests:OFF} \
