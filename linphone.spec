@@ -26,7 +26,7 @@ Patch2:		linphone-4.4.24-fix_xds_version.patch
 Patch3:		linphone-5.0.44-dont_check_bctools_version.patch
 Patch4:		linphone-5.1.45-port_to_python_3.11.patch
 Patch5:		linphone-5.1.61-fix_compiler_strict-prototypes_warinig.patch
-Patch6:		linphone-5.1.61-fix_fox_clang.patch
+Patch6:		linphone-5.1.61-fix_clang.patch
 
 BuildRequires:	cmake
 BuildRequires:	ninja
