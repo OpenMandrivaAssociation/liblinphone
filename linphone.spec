@@ -160,19 +160,19 @@ Libraries and includes files for developing programs based on %{name}.
 
 %build
 %cmake \
-	-DENABLE_STRICT:BOOL=%{?with_static:ON}%{?!with_static:OFF} \
-	-DENABLE_STATIC:BOOL=%{?with_static:ON}%{?without_static:OFF} \
+	-DENABLE_STRICT:BOOL=%{?with_strict:ON}%{?!with_strict:OFF} \
+	-DENABLE_STATIC:BOOL=%{?with_static:ON}%{?!without_static:OFF} \
 	-DENABLE_DATE:BOOL=OFF \
-	-DENABLE_UNIT_TESTS:BOOL=%{?with_tests:ON}%{?without_tests:OFF} \
+	-DENABLE_UNIT_TESTS:BOOL=%{?with_tests:ON}%{?!without_tests:OFF} \
 	-DENABLE_UPDATE_CHECK:BOOL=OFF \
 	-DENABLE_STRICT:BOOL=ON \
 	-DENABLE_UPDATE_CHECK:BOOL=OFF \
-	-DENABLE_DB_STORAGE:BOOL=%{?with_db:ON}%{?without_db:OFF} \
-	-DENABLE_LDAP:BOOL=%{?with_ldap:ON}%{?without_ldap:OFF} \
-	-DENABLE_ASSISTANT:BOOL=%{?with_assistant:ON}%{?without_assistant:OFF} \
-	-DENABLE_NOTIFY:BOOL=%{?with_notify:ON}%{?without_notify:OFF} \
+	-DENABLE_DB_STORAGE:BOOL=%{?with_db:ON}%{?!without_db:OFF} \
+	-DENABLE_LDAP:BOOL=%{?with_ldap:ON}%{?!without_ldap:OFF} \
+	-DENABLE_ASSISTANT:BOOL=%{?with_assistant:ON}%{?!without_assistant:OFF} \
+	-DENABLE_NOTIFY:BOOL=%{?with_notify:ON}%{?!without_notify:OFF} \
 	-DENABLE_BUILD_VERBOSE:BOOL=OFF \
-	-DENABLE_DEBUG_LOGS:BOOOL=%{?with_debug:ON}%{?without_debug:OFF} \
+	-DENABLE_DEBUG_LOGS:BOOOL=%{?with_debug:ON}%{?!without_debug:OFF} \
 	-G Ninja
 %ninja_build
 
