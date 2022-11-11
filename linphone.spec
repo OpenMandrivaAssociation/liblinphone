@@ -19,7 +19,7 @@ Release:	1
 License:	GPLv2+
 Group:		Communications
 URL:		http://www.linphone.org
-Source0:	https://gitlab.linphone.org/BC/public/lib%{name}/-/archive/%{version}/lib%{name}-%{version}.tar.bz2
+Source0:	https://gitlab.linphone.org/BC/public/liblinphone/-/archive/%{version}/lib%{name}-%{version}.tar.bz2
 Patch0:		linphone-5.0.44-cmake-config-location.patch
 # (wally) originally from OpenSUSE, slightly modified
 Patch1:		linphone-5.1.45-fix-pkgconfig.patch
