@@ -9,7 +9,7 @@
 %bcond_with	ldap
 %bcond_without	notify
 %bcond_with	static
-%bcond_without	strict
+%bcond_with	strict
 %bcond_with	tests
 
 Summary:	Voice over IP Application
