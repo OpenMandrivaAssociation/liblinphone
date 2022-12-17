@@ -21,14 +21,15 @@ Group:		Communications
 URL:		http://www.linphone.org
 Source0:	https://gitlab.linphone.org/BC/public/liblinphone/-/archive/%{version}/lib%{name}-%{version}.tar.bz2
 Patch0:		linphone-5.0.44-cmake-config-location.patch
+Patch1:		linphone-5.2.0-cmake-dont-use-bc_git_version.patch
 # (wally) originally from OpenSUSE, slightly modified
-Patch1:		linphone-5.2.0-fix-pkgconfig.patch
-Patch2:		linphone-4.4.24-fix_xds_version.patch
-Patch3:		linphone-5.0.44-dont_check_bctools_version.patch
-Patch4:		linphone-5.1.61-fix_compiler_strict-prototypes_warinig.patch
-Patch5:		linphone-5.1.61-fix_clang.patch
+Patch2:		linphone-5.2.0-fix-pkgconfig.patch
+Patch3:		linphone-4.4.24-fix_xds_version.patch
+Patch4:		linphone-5.0.44-dont_check_bctools_version.patch
+Patch5:		linphone-5.1.61-fix_compiler_strict-prototypes_warinig.patch
+Patch6:		linphone-5.1.61-fix_clang.patch
 # (upstream)
-Patch6:		linphone-5.2.0-use_shared_libs.patch
+Patch7:		linphone-5.2.0-use_shared_libs.patch
 
 BuildRequires:	cmake
 BuildRequires:	ninja

@@ -1,0 +1,17 @@
+--- a/coreapi/CMakeLists.txt
++++ b/coreapi/CMakeLists.txt
+@@ -119,7 +119,13 @@
+ endif()
+ 
+ 
+-bc_git_version(liblinphone ${PROJECT_VERSION})
++add_custom_target(liblinphone-git-version
++			WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
++			COMMAND echo "#define MS2_GIT_VERSION \"0000000\"" > "gitversion.h"
++			BYPRODUCTS "gitversion.h"
++			VERBATIM
++		)
++
+ 
+ add_definitions(
+ 	-DUSE_BELLESIP
