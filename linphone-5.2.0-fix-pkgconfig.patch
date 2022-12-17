@@ -1,0 +1,32 @@
+--- a/share/CMakeLists.txt
++++ b/share/CMakeLists.txt
+@@ -25,6 +25,15 @@
+ 
+ set(ROOTCA_FILE "${CMAKE_CURRENT_SOURCE_DIR}/rootca.pem" PARENT_SCOPE)
+ 
++set(LINPHONE_CFLAGS ${LINPHONE_CPPFLAGS})
++set(LINPHONE_LIBS ${LINPHONE_LDFLAGS})
++set(prefix ${CMAKE_INSTALL_PREFIX})
++set(exec_prefix ${prefix}/libexec)
++set(libdir ${CMAKE_INSTALL_LIBDIR})
++set(includedir ${prefix}/include)
++configure_file(${CMAKE_CURRENT_SOURCE_DIR}/linphone.pc.in ${CMAKE_CURRENT_BINARY_DIR}/linphone.pc)
++install(FILES ${CMAKE_CURRENT_BINARY_DIR}/linphone.pc DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig")
++
+ set(GRAMMAR_FILES
+ 	"${CMAKE_CURRENT_SOURCE_DIR}/cpim_grammar"
+ 	"${CMAKE_CURRENT_SOURCE_DIR}/ics_grammar"
+--- a/share/linphone.pc.in
++++ b/share/linphone.pc.in
+@@ -3,9 +3,9 @@
+ libdir=@libdir@
+ includedir=@includedir@
+ 
+-Requires: mediastreamer ortp bctoolbox
++Requires: mediastreamer belle-sip bctoolbox
+ Name: liblinphone
+ Description: All in one linphone libs.
+-Version: @VERSION@
++Version: @LINPHONE_VERSION@
+ Libs: @LINPHONE_LIBS@
+ Cflags: @LINPHONE_CFLAGS@
