@@ -14,7 +14,7 @@
 
 Summary:	Voice over IP Application
 Name:		linphone
-Version:	5.2.12
+Version:	5.2.16
 Release:	1
 License:	GPLv2+
 Group:		Communications
