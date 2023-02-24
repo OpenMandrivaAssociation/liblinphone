@@ -163,6 +163,7 @@ Libraries and includes files for developing programs based on %{name}.
 #find '(' -name '*.c' -o -name '*.h' ')' -print0 | xargs -0 sed -i -e 's,\r$,,'
 
 %build
+CXXFLAGS="%{optflags} -std=c++11"
 %cmake \
 	-DENABLE_STATIC:BOOL=%{?with_static:ON}%{?!with_static:OFF} \
 	-DENABLE_STRICT:BOOL=%{?with_strict:ON}%{?!with_strict:OFF} \
