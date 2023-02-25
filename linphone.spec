@@ -24,12 +24,15 @@ Patch0:		linphone-5.0.44-cmake-config-location.patch
 Patch1:		linphone-5.2.0-cmake-dont-use-bc_git_version.patch
 # (wally) originally from OpenSUSE, slightly modified
 Patch2:		linphone-5.2.0-fix-pkgconfig.patch
-Patch3:		linphone-4.4.24-fix_xds_version.patch
+Patch3:		linphone-4.4.24-fix_xds_version.patcherror: use of undeclared identifier 'str'; did you mean 'std'?
 Patch4:		linphone-5.0.44-dont_check_bctools_version.patch
 Patch5:		linphone-5.1.61-fix_compiler_strict-prototypes_warinig.patch
 Patch6:		linphone-5.1.61-fix_clang.patch
+# required by zxing-cpp
+Patch10:	linphone-5.2.23-force++17.patch
 # (upstream)
-Patch7:		linphone-5.2.0-use_shared_libs.patch
+Patch10:	linphone-5.2.0-use_shared_libs.patch
+
 
 BuildRequires:	cmake
 BuildRequires:	ninja
@@ -163,7 +166,6 @@ Libraries and includes files for developing programs based on %{name}.
 #find '(' -name '*.c' -o -name '*.h' ')' -print0 | xargs -0 sed -i -e 's,\r$,,'
 
 %build
-CXXFLAGS="%{optflags} -std=c++11"
 %cmake \
 	-DENABLE_STATIC:BOOL=%{?with_static:ON}%{?!with_static:OFF} \
 	-DENABLE_STRICT:BOOL=%{?with_strict:ON}%{?!with_strict:OFF} \

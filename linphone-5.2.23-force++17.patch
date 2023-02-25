@@ -1,0 +1,11 @@
+--- a/src/xml/generate.py
++++ b/src/xml/generate.py
+@@ -51,7 +51,7 @@
+ 		"--generate-ostream",
+ 		"--generate-detach",
+ 		"--generate-polymorphic",
+-		"--std", "c++11",
++		"--std", "c++17",
+ 		"--type-naming", "java",
+ 		"--function-naming", "java",
+ 		"--hxx-suffix", ".h",
