@@ -29,7 +29,7 @@ Patch4:		linphone-5.0.44-dont_check_bctools_version.patch
 Patch5:		linphone-5.1.61-fix_compiler_strict-prototypes_warinig.patch
 Patch6:		linphone-5.1.61-fix_clang.patch
 # required by zxing-cpp
-Patch10:	linphone-5.2.23-force++17.patch
+Patch7:	linphone-5.2.23-force++17.patch
 # (upstream)
 Patch10:	linphone-5.2.0-use_shared_libs.patch
 
