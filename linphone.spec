@@ -24,7 +24,7 @@ Patch0:		linphone-5.0.44-cmake-config-location.patch
 Patch1:		linphone-5.2.0-cmake-dont-use-bc_git_version.patch
 # (wally) originally from OpenSUSE, slightly modified
 Patch2:		linphone-5.2.0-fix-pkgconfig.patch
-Patch3:		linphone-4.4.24-fix_xds_version.patcherror: use of undeclared identifier 'str'; did you mean 'std'?
+Patch3:		linphone-4.4.24-fix_xds_version.patch
 Patch4:		linphone-5.0.44-dont_check_bctools_version.patch
 Patch5:		linphone-5.1.61-fix_compiler_strict-prototypes_warinig.patch
 Patch6:		linphone-5.1.61-fix_clang.patch
