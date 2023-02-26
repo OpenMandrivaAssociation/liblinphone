@@ -29,7 +29,7 @@ Patch4:		linphone-5.0.44-dont_check_bctools_version.patch
 Patch5:		linphone-5.1.61-fix_compiler_strict-prototypes_warinig.patch
 Patch6:		linphone-5.1.61-fix_clang.patch
 # required by zxing-cpp
-Patch7:		linphone-5.2.23-force-cpp17-standard.patch
+#Patch7:		linphone-5.2.23-force-cpp17-standard.patch
 # (upstream)
 Patch10:	linphone-5.2.0-use_shared_libs.patch
 
@@ -166,6 +166,7 @@ Libraries and includes files for developing programs based on %{name}.
 #find '(' -name '*.c' -o -name '*.h' ')' -print0 | xargs -0 sed -i -e 's,\r$,,'
 
 %build
+%global cpp_std c++17
 %cmake \
 	-DENABLE_STATIC:BOOL=%{?with_static:ON}%{?!with_static:OFF} \
 	-DENABLE_STRICT:BOOL=%{?with_strict:ON}%{?!with_strict:OFF} \
