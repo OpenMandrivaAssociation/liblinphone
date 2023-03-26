@@ -14,7 +14,7 @@
 
 Summary:	Voice over IP Application
 Name:		linphone
-Version:	5.2.23
+Version:	5.2.40
 Release:	1
 License:	GPLv2+
 Group:		Communications
@@ -166,7 +166,7 @@ Libraries and includes files for developing programs based on %{name}.
 #find '(' -name '*.c' -o -name '*.h' ')' -print0 | xargs -0 sed -i -e 's,\r$,,'
 
 %build
-%global cpp_std c++17
+#%%global cpp_std c++17
 %cmake \
 	-DENABLE_STATIC:BOOL=%{?with_static:ON}%{?!with_static:OFF} \
 	-DENABLE_STRICT:BOOL=%{?with_strict:ON}%{?!with_strict:OFF} \
@@ -178,8 +178,8 @@ Libraries and includes files for developing programs based on %{name}.
 	-DENABLE_ASSISTANT:BOOL=%{?with_assistant:ON}%{?!without_assistant:OFF} \
 	-DENABLE_NOTIFY:BOOL=%{?with_notify:ON}%{?!without_notify:OFF} \
 	-DENABLE_BUILD_VERBOSE:BOOL=OFF \
-	-DENABLE_DEBUG_LOGS:BOOOL=%{?with_debug:ON}%{?!without_debug:OFF} \
 	-G Ninja
+#	-DENABLE_DEBUG_LOGS:BOOOL=%{?with_debug:ON}%{?!without_debug:OFF} \
 %ninja_build
 
 %install
