@@ -8,6 +8,8 @@
 %bcond_without	db
 %bcond_with	ldap
 %bcond_without	notify
+# (mandian) qrcode support requires c++17 standard enabled
+%bcond_with	qrcode_support
 %bcond_with	static
 %bcond_with	strict
 %bcond_with	tests
@@ -163,10 +165,8 @@ Libraries and includes files for developing programs based on %{name}.
 
 %prep
 %autosetup -p1 -n lib%{name}-%{version}
-#find '(' -name '*.c' -o -name '*.h' ')' -print0 | xargs -0 sed -i -e 's,\r$,,'
 
 %build
-#%%global cpp_std c++17
 %cmake \
 	-DENABLE_STATIC:BOOL=%{?with_static:ON}%{?!with_static:OFF} \
 	-DENABLE_STRICT:BOOL=%{?with_strict:ON}%{?!with_strict:OFF} \
@@ -177,9 +177,8 @@ Libraries and includes files for developing programs based on %{name}.
 	-DENABLE_LDAP:BOOL=%{?with_ldap:ON}%{?!without_ldap:OFF} \
 	-DENABLE_ASSISTANT:BOOL=%{?with_assistant:ON}%{?!without_assistant:OFF} \
 	-DENABLE_NOTIFY:BOOL=%{?with_notify:ON}%{?!without_notify:OFF} \
-	-DENABLE_BUILD_VERBOSE:BOOL=OFF \
+	-DENABLE_QRCODE:BOOL=%{?with_qrcode_support:ON}%{?!without_qrcode_support:OFF} \
 	-G Ninja
-#	-DENABLE_DEBUG_LOGS:BOOOL=%{?with_debug:ON}%{?!without_debug:OFF} \
 %ninja_build
 
 %install
