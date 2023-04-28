@@ -113,7 +113,7 @@ environments.
 %files -n linphone-data
 %{_datadir}/belr/grammars/
 %{_datadir}/sounds/linphone/
-%{_datadir}/%{name}/rootca.pem
+%{_datadir}/linphone/rootca.pem
 
 #--------------------------------------------------------------------
 
