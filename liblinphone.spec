@@ -84,7 +84,7 @@ environments.
 %package -n linphone-cli
 Summary:	Command Line Interface for %{name}
 Group:		Communications
-Requires:	lib%{name}-data >= %{version}-%{release}
+Requires:	%{name}-data >= %{version}-%{release}
 Conflicts:	%{name} < 3.12.0-1
 
 %description -n linphone-cli
