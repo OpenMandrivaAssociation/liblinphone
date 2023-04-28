@@ -1,7 +1,7 @@
 %define major 10
-%define libname	%mklibname %{name}
-%define devname %mklibname %{name} -d
-%define libname_linphonepp %mklibname %{name}++
+%define libname	%mklibname linphone
+%define devname %mklibname linphone -d
+%define libname_linphonepp %mklibname linphone++
 
 %bcond_without	assistant
 %bcond_with	debug
@@ -15,25 +15,25 @@
 %bcond_with	tests
 
 Summary:	Voice over IP Application
-Name:		linphone
-Version:	5.2.40
-Release:	2
+Name:		liblinphone
+Version:	5.2.53
+Release:	1
 License:	GPLv2+
 Group:		Communications
 URL:		http://www.linphone.org
-Source0:	https://gitlab.linphone.org/BC/public/liblinphone/-/archive/%{version}/lib%{name}-%{version}.tar.bz2
-Patch0:		linphone-5.0.44-cmake-config-location.patch
-Patch1:		linphone-5.2.0-cmake-dont-use-bc_git_version.patch
+Source0:	https://gitlab.linphone.org/BC/public/liblinphone/-/archive/%{version}/%{name}-%{version}.tar.bz2
+Patch0:		liblinphone-5.0.44-cmake-config-location.patch
+Patch1:		liblinphone-5.2.0-cmake-dont-use-bc_git_version.patch
 # (wally) originally from OpenSUSE, slightly modified
-Patch2:		linphone-5.2.0-fix-pkgconfig.patch
-Patch3:		linphone-4.4.24-fix_xds_version.patch
-Patch4:		linphone-5.0.44-dont_check_bctools_version.patch
-Patch5:		linphone-5.1.61-fix_compiler_strict-prototypes_warinig.patch
-Patch6:		linphone-5.1.61-fix_clang.patch
+Patch2:		liblinphone-5.2.0-fix-pkgconfig.patch
+Patch3:		liblinphone-4.4.24-fix_xds_version.patch
+Patch4:		liblinphone-5.0.44-dont_check_bctools_version.patch
+Patch5:		liblinphone-5.1.61-fix_compiler_strict-prototypes_warinig.patch
+Patch6:		liblinphone-5.1.61-fix_clang.patch
 # required by zxing-cpp
 #Patch7:		linphone-5.2.23-force-cpp17-standard.patch
 # (upstream)
-Patch10:	linphone-5.2.0-use_shared_libs.patch
+Patch10:	liblinphone-5.2.0-use_shared_libs.patch
 
 
 BuildRequires:	cmake
@@ -81,17 +81,17 @@ environments.
 
 #--------------------------------------------------------------------
 
-%package cli
+%package -n linphone-cli
 Summary:	Command Line Interface for %{name}
 Group:		Communications
 Requires:	lib%{name}-data >= %{version}-%{release}
 Conflicts:	%{name} < 3.12.0-1
 
-%description cli
+%description -n linphone-cli
 Linphone is an open source SIP Phone, available on mobile and desktop
 environments.
 
-%files cli
+%files -n linphone-cli
 %license LICENSE.txt
 %doc README.md CHANGELOG.md NEWS
 %{_bindir}/linphonec*
@@ -99,17 +99,18 @@ environments.
 
 #--------------------------------------------------------------------
 
-%package -n lib%{name}-data
-Summary:	Data files for %{name}
+%package -n linphone-data
+Summary:	Data files for linphone
 Group:		Communications
 BuildArch:	noarch
-Conflicts:	%{name} < 3.12.0-1
+Conflicts:	linphone < 3.12.0-1
+Provides:	%{name}-data
 
-%description -n lib%{name}-data
+%description -n linphone-data
 Linphone is an open source SIP Phone, available on mobile and desktop
 environments.
 
-%files -n lib%{name}-data
+%files -n linphone-data
 %{_datadir}/belr/grammars/
 %{_datadir}/sounds/linphone/
 %{_datadir}/%{name}/rootca.pem
@@ -118,40 +119,40 @@ environments.
 
 
 %package -n %{libname}
-Summary:	Primary library for %{name}
+Summary:	Primary library for linphone
 Group:		System/Libraries
-Requires:	lib%{name}-data >= %{version}-%{release}
+Requires:	linphone-data >= %{version}-%{release}
 
 %description -n %{libname}
 Primary library for %{name}.
 
 %files -n %{libname}
-%{_libdir}/lib%{name}.so.%{major}*
+%{_libdir}/%{name}.so.%{major}*
 
 #--------------------------------------------------------------------
 
 %package -n %{libname_linphonepp}
-Summary:	C++ wrapper library for %{name}
+Summary:	C++ wrapper library for linphone
 Group:		System/Libraries
 
 %description -n %{libname_linphonepp}
-C++ wrapper library for %{name}.
+C++ wrapper library for linphone.
 
 %files -n %{libname_linphonepp}
-%{_libdir}/lib%{name}++.so.%{major}*
+%{_libdir}/%{name}++.so.%{major}*
 
 #--------------------------------------------------------------------
 
 %package -n %{devname}
-Summary:	Header files and static libraries from %{name}
+Summary:	Header files and static libraries for linphone
 Group:		Development/C
 Requires:	%{libname} = %{version}-%{release}
 Requires:	%{libname_linphonepp} = %{version}-%{release}
-Provides:	lib%{name}-devel = %{version}-%{release}
+Provides:	linphone-devel = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
 
 %description -n %{devname}
-Libraries and includes files for developing programs based on %{name}.
+Libraries and includes files for developing programs based on linphone.
 
 %files -n %{devname}
 %{_includedir}/linphone/
@@ -164,7 +165,7 @@ Libraries and includes files for developing programs based on %{name}.
 #--------------------------------------------------------------------
 
 %prep
-%autosetup -p1 -n lib%{name}-%{version}
+%autosetup -p1 -n %{name}-%{version}
 
 %build
 %cmake \
