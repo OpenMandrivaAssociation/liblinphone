@@ -32,9 +32,6 @@ Patch5:		liblinphone-5.1.61-fix_compiler_strict-prototypes_warinig.patch
 Patch6:		liblinphone-5.1.61-fix_clang.patch
 # required by zxing-cpp
 #Patch7:		linphone-5.2.23-force-cpp17-standard.patch
-# (upstream)
-Patch10:	liblinphone-5.2.0-use_shared_libs.patch
-
 
 BuildRequires:	cmake
 BuildRequires:	ninja
