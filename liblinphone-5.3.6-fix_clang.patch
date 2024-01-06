@@ -1,0 +1,13 @@
+--- a/src/sal/sal_stream_description.cpp
++++ b/src/sal/sal_stream_description.cpp
+@@ -600,7 +600,9 @@
+ 		if ((value = belle_sdp_attribute_get_value(attribute)) != NULL) {
+ #if __GNUC__ > 7
+ #pragma GCC diagnostic push
++			#if !defined(__clang__)
+ #pragma GCC diagnostic ignored "-Wstringop-truncation"
++			#endif
+ #endif
+ 			strncpy((char *)(actualCfg.zrtphash), belle_sdp_attribute_get_value(attribute), sizeof(actualCfg.zrtphash));
+ 			actualCfg.haveZrtpHash = 1;
+

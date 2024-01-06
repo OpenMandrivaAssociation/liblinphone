@@ -3,7 +3,12 @@
 %define devname %mklibname linphone -d
 %define libname_linphonepp %mklibname linphone++
 
+# exclude unwanter cmake requires
+%global __requires_exclude cmake\\(openldap\\)|cmake\\(OpenLDAP\\) \
+	|cmake\\(tunnel\\)|cmake\\(Tunnel\\)
+
 %bcond_without	assistant
+%bcond_without	console_ui
 %bcond_with	debug
 %bcond_without	db
 %bcond_with	ldap
@@ -22,14 +27,13 @@ License:	GPLv2+
 Group:		Communications
 URL:		http://www.linphone.org
 Source0:	https://gitlab.linphone.org/BC/public/liblinphone/-/archive/%{version}/%{name}-%{version}.tar.bz2
-Patch0:		liblinphone-5.0.44-cmake-config-location.patch
+Patch0:		liblinphone-5.3.6-cmake-config-location.patch
 Patch1:		liblinphone-5.2.0-cmake-dont-use-bc_git_version.patch
-# (wally) originally from OpenSUSE, slightly modified
 Patch2:		liblinphone-5.2.0-fix-pkgconfig.patch
 Patch3:		liblinphone-4.4.24-fix_xds_version.patch
-Patch4:		liblinphone-5.0.44-dont_check_bctools_version.patch
-Patch5:		liblinphone-5.1.61-fix_compiler_strict-prototypes_warinig.patch
-Patch6:		liblinphone-5.1.61-fix_clang.patch
+#Patch4:		liblinphone-5.3.6-dont_check_bctools_version.patch
+Patch5:		liblinphone-5.3.6-fix_compiler_strict-prototypes_warinig.patch
+Patch6:		liblinphone-5.3.6-fix_clang.patch
 # required by zxing-cpp
 #Patch7:		linphone-5.2.23-force-cpp17-standard.patch
 
@@ -70,11 +74,11 @@ environments.
 %files
 %license LICENSE.txt
 %doc README.md CHANGELOG.md NEWS
-%{_bindir}/lp-auto-answer
-%{_bindir}/lp-sendmsg
-%{_bindir}/lp-test-ecc
-%{_bindir}/lpc2xml_test
-%{_bindir}/xml2lpc_test
+%{_bindir}/liblinphone-auto-answer
+%{_bindir}/liblinphone-lpc2xml-test
+%{_bindir}/liblinphone-sendmsg
+%{_bindir}/liblinphone-test-ecc
+%{_bindir}/liblinphone-xml2lpc-test
 
 #--------------------------------------------------------------------
 
@@ -91,8 +95,12 @@ environments.
 %files -n linphone-cli
 %license LICENSE.txt
 %doc README.md CHANGELOG.md NEWS
-%{_bindir}/linphonec*
-%{_bindir}/linphone-daemon*
+%if %{with console_ui}
+%{_bindir}/linphonec
+%{_bindir}/linphonecsh
+%endif
+%{_bindir}/linphone-daemon
+%{_bindir}/linphone-daemon-pipetest
 
 #--------------------------------------------------------------------
 
@@ -156,7 +164,7 @@ Libraries and includes files for developing programs based on linphone.
 %{_includedir}/linphone++/
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
-%{_datadir}/cmake/Linphone
+%{_datadir}/cmake/LibLinphone
 %{_datadir}/cmake/LinphoneCxx
 
 #--------------------------------------------------------------------
@@ -174,6 +182,7 @@ Libraries and includes files for developing programs based on linphone.
 	-DENABLE_DB_STORAGE:BOOL=%{?with_db:ON}%{?!without_db:OFF} \
 	-DENABLE_LDAP:BOOL=%{?with_ldap:ON}%{?!without_ldap:OFF} \
 	-DENABLE_ASSISTANT:BOOL=%{?with_assistant:ON}%{?!without_assistant:OFF} \
+	-DENABLE_CONSOLE_UI:BOOL==%{?with_console_ui:ON}%{?!without_console_ui:OFF} \
 	-DENABLE_NOTIFY:BOOL=%{?with_notify:ON}%{?!without_notify:OFF} \
 	-DENABLE_QRCODE:BOOL=%{?with_qrcode_support:ON}%{?!without_qrcode_support:OFF} \
 	-G Ninja

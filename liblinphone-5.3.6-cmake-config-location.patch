@@ -4,11 +4,11 @@
  endif()
  
  include(CMakePackageConfigHelpers)
--set(CONFIG_PACKAGE_LOCATION "${CMAKE_INSTALL_DATADIR}/Linphone/cmake")
-+set(CONFIG_PACKAGE_LOCATION "${CMAKE_INSTALL_DATADIR}/cmake/Linphone")
- 
- write_basic_package_version_file(
- 	"${CMAKE_CURRENT_BINARY_DIR}/LinphoneConfigVersion.cmake"
+-set(CMAKE_MODULES_INSTALL_DIR "${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME}/cmake")
++set(CMAKE_MODULES_INSTALL_DIR "${CMAKE_INSTALL_DATADIR}/cmake/${PROJECT_NAME}/")
+ configure_package_config_file("cmake/${PROJECT_NAME}Config.cmake.in" "${PROJECT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
+ 	INSTALL_DESTINATION "${CMAKE_MODULES_INSTALL_DIR}"
+ 	PATH_VARS LIBLINPHONE_PLUGINS_DIR
 --- a/wrappers/cpp/CMakeLists.txt
 +++ b/wrappers/cpp/CMakeLists.txt
 @@ -98,12 +98,12 @@
