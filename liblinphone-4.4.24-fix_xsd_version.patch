@@ -1,3 +1,14 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -124,7 +124,7 @@ find_package(Belr 5.3.0 REQUIRED)
+ if(ENABLE_ADVANCED_IM)
+ 	bc_find_package(XercesC XercesC::XercesC xerces-c REQUIRED)
+ 	set(HAVE_ADVANCED_IM 1)
+-	set(LIBXSD_INCLUDE_DIRS "${PROJECT_SOURCE_DIR}/libxsd")
++	set(LIBXSD_INCLUDE_DIRS "${CMAKE_INSTALL_FULL_INCLUDEDIR}")
+ endif()
+ 
+ if(ENABLE_SRTP)
 --- a/src/xml/linphone-imdn.h
 +++ b/src/xml/linphone-imdn.h
 @@ -59,7 +59,7 @@
