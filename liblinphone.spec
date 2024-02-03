@@ -64,7 +64,9 @@ BuildRequires:	xsd-devel
 %{?with_ldap:
 BuildRequires:	pkgconfig(ldap)
 }
-
+%{?with_qrcode_support:
+BuildRequires:	cmake(zxing)
+}
 %description
 Linphone is an open source SIP Phone, available on mobile and desktop
 environments.
