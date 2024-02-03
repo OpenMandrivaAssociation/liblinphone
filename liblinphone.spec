@@ -37,8 +37,8 @@ Patch6:		liblinphone-5.3.6-fix_clang.patch
 Patch7:		liblinphone-5.3.15-add_jsoncpp_dep.patch
 BuildRequires:	cmake
 BuildRequires:	ninja
-BuildRequires:	boost-devel
 BuildRequires:	doxygen
+BuildRequires:	boost-devel
 BuildRequires:	cmake(bctoolbox)
 BuildRequires:	cmake(belcard)
 BuildRequires:	cmake(bellesip)
@@ -48,7 +48,12 @@ BuildRequires:	cmake(jsoncpp)
 BuildRequires:	cmake(libjpeg-turbo)
 BuildRequires:	cmake(lime)
 BuildRequires:	cmake(mediastreamer2)
+%{?with_qrcode_support:
 BuildRequires:	cmake(zxing)
+}
+%{?with_ldap:
+BuildRequires:	pkgconfig(ldap)
+}
 BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:	pkgconfig(sqlite3)
 BuildRequires:	pkgconfig(udev)
@@ -61,12 +66,7 @@ BuildRequires:	python3dist(six)
 BuildRequires:	soci-devel
 }
 BuildRequires:	xsd-devel
-%{?with_ldap:
-BuildRequires:	pkgconfig(ldap)
-}
-%{?with_qrcode_support:
-BuildRequires:	cmake(zxing)
-}
+
 %description
 Linphone is an open source SIP Phone, available on mobile and desktop
 environments.
