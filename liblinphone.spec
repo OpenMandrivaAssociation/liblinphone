@@ -48,9 +48,6 @@ BuildRequires:	cmake(jsoncpp)
 BuildRequires:	cmake(libjpeg-turbo)
 BuildRequires:	cmake(lime)
 BuildRequires:	cmake(mediastreamer2)
-%if %{with qrcode_support}
-BuildRequires:	cmake(zxing)
-%endif
 %if %{with ldap}
 BuildRequires:	pkgconfig(ldap)
 %endif
@@ -60,6 +57,9 @@ BuildRequires:	pkgconfig(udev)
 BuildRequires:	pkgconfig(xerces-c)
 BuildRequires:	pkgconfig(zlib)
 BuildRequires:	pkgconfig(python)
+%if %{with qrcode_support}
+BuildRequires:	pkgconfig(zxing)
+%endif
 BuildRequires:	python%{pyver}dist(pystache)
 BuildRequires:	python%{pyver}dist(six)
 %if %{with db}
