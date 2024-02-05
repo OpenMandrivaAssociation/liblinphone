@@ -48,23 +48,23 @@ BuildRequires:	cmake(jsoncpp)
 BuildRequires:	cmake(libjpeg-turbo)
 BuildRequires:	cmake(lime)
 BuildRequires:	cmake(mediastreamer2)
-%{?with_qrcode_support:
+%if %{with qrcode_support}
 BuildRequires:	cmake(zxing)
-}
-%{?with_ldap:
+%endif
+%if %{with ldap}
 BuildRequires:	pkgconfig(ldap)
-}
+%endif
 BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:	pkgconfig(sqlite3)
 BuildRequires:	pkgconfig(udev)
 BuildRequires:	pkgconfig(xerces-c)
 BuildRequires:	pkgconfig(zlib)
-BuildRequires:	pkgconfig(python3)
-BuildRequires:	python3dist(pystache)
-BuildRequires:	python3dist(six)
-%{?with_db:
+BuildRequires:	pkgconfig(python)
+BuildRequires:	python%{pyver}dist(pystache)
+BuildRequires:	python%{pyver}dist(six)
+%if %{with db}
 BuildRequires:	soci-devel
-}
+%endif
 BuildRequires:	xsd-devel
 
 %description
@@ -196,7 +196,7 @@ sed -i -e '/XSD_INT_VERSION/s/!=/</g' $(grep -r -l XSD_INT_VERSION)
 	-DENABLE_JAVA:BOOL=%{?with_java:ON}%{?!with_java:OFF} \
 	-DENABLE_LDAP:BOOL=%{?with_ldap:ON}%{?!with_ldap:OFF} \
 	-DENABLE_QRCODE:BOOL=%{?with_qrcode_support:ON}%{?!with_qrcode_support:OFF} \
-    -DENABLE_ROOTCA_DOWNLOAD:BOOL=OFF \
+	-DENABLE_ROOTCA_DOWNLOAD:BOOL=OFF \
 	-DENABLE_TOOLS:BOOL=%{?with_tools:ON}%{?!with_tools:OFF} \
 	-DENABLE_UNIT_TESTS:BOOL=%{?with_tests:ON}%{?!with_tests:OFF} \
 	-DENABLE_UPDATE_CHECK:BOOL=OFF \
