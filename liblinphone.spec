@@ -187,18 +187,18 @@ sed -i -e '/XSD_INT_VERSION/s/!=/</g' $(grep -r -l XSD_INT_VERSION)
 %cmake \
 	-DENABLE_STATIC:BOOL=%{?with_static:ON}%{?!with_static:OFF} \
 	-DENABLE_STRICT:BOOL=%{?with_strict:ON}%{?!with_strict:OFF} \
-	-DENABLE_CONSOLE_UI:BOOL=%{?with_console_ui:ON}%{?!without_console_ui:OFF} \
+	-DENABLE_CONSOLE_UI:BOOL=%{?with_console_ui:ON}%{?!with_console_ui:OFF} \
 	-DENABLE_DAEMON:BOOL=YES \
 	-DENABLE_DATE:BOOL=OFF \
-	-DENABLE_DB_STORAGE:BOOL=%{?with_db:ON}%{?!without_db:OFF} \
-	-DENABLE_EXAMPLE_PLUGIN:BOOL=%{?with_example_plugins:ON}%{?!without_example_plugins:OFF} \
+	-DENABLE_DB_STORAGE:BOOL=%{?with_db:ON}%{?!with_db:OFF} \
+	-DENABLE_EXAMPLE_PLUGIN:BOOL=%{?with_example_plugins:ON}%{?!with_example_plugins:OFF} \
 	-DENABLE_GTK_UI:BOOL=OFF \
-	-DENABLE_JAVA:BOOL=%{?with_java:ON}%{?!without_java:OFF} \
-	-DENABLE_LDAP:BOOL=%{?with_ldap:ON}%{?!without_ldap:OFF} \
-	-DENABLE_QRCODE:BOOL=%{?with_qrcode_support:ON}%{?!without_qrcode_support:OFF} \
+	-DENABLE_JAVA:BOOL=%{?with_java:ON}%{?!with_java:OFF} \
+	-DENABLE_LDAP:BOOL=%{?with_ldap:ON}%{?!with_ldap:OFF} \
+	-DENABLE_QRCODE:BOOL=%{?with_qrcode_support:ON}%{?!with_qrcode_support:OFF} \
     -DENABLE_ROOTCA_DOWNLOAD:BOOL=OFF \
-	-DENABLE_TOOLS:BOOL=%{?with_tools:ON}%{?!without_tools:OFF} \
-	-DENABLE_UNIT_TESTS:BOOL=%{?with_tests:ON}%{?!without_tests:OFF} \
+	-DENABLE_TOOLS:BOOL=%{?with_tools:ON}%{?!with_tools:OFF} \
+	-DENABLE_UNIT_TESTS:BOOL=%{?with_tests:ON}%{?!with_tests:OFF} \
 	-DENABLE_UPDATE_CHECK:BOOL=OFF \
 	-DENABLE_ZRTP:BOOL=ON \
 	-G Ninja
