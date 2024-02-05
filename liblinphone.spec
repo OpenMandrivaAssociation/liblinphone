@@ -1,5 +1,5 @@
 %define major 10
-%define libname	%mklibname linphone
+%define libname %mklibname linphone
 %define devname %mklibname linphone -d
 %define libname_linphonepp %mklibname linphone++
 
@@ -22,7 +22,7 @@
 Summary:	Voice over IP Application
 Name:		liblinphone
 Version:	5.3.15
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Communications
 URL:		http://www.linphone.org
@@ -30,11 +30,11 @@ Source0:	https://gitlab.linphone.org/BC/public/liblinphone/-/archive/%{version}/
 Patch0:		liblinphone-5.3.6-cmake-config-location.patch
 Patch1:		liblinphone-5.2.0-cmake-dont-use-bc_git_version.patch
 Patch2:		liblinphone-5.2.0-fix-pkgconfig.patch
-#Patch3:		liblinphone-4.4.24-fix_xsd_version.patch
-#Patch4:		liblinphone-5.3.6-dont_check_bctools_version.patch
-Patch5:		liblinphone-5.3.6-fix_compiler_strict-prototypes_warinig.patch
-Patch6:		liblinphone-5.3.6-fix_clang.patch
-Patch7:		liblinphone-5.3.15-add_jsoncpp_dep.patch
+Patch3:		liblinphone-5.3.15-use_system_rootca.patch
+Patch4:		liblinphone-5.3.6-fix_compiler_strict-prototypes_warinig.patch
+Patch5:		liblinphone-5.3.6-fix_clang.patch
+Patch6:		liblinphone-5.3.15-add_jsoncpp_dep.patch
+
 BuildRequires:	cmake
 BuildRequires:	ninja
 BuildRequires:	doxygen
@@ -120,7 +120,7 @@ environments.
 %files -n linphone-data
 %{_datadir}/belr/grammars/
 %{_datadir}/sounds/linphone/
-%{_datadir}/linphone/rootca.pem
+#{_datadir}/linphone/rootca.pem
 
 #--------------------------------------------------------------------
 
@@ -196,7 +196,8 @@ sed -i -e '/XSD_INT_VERSION/s/!=/</g' $(grep -r -l XSD_INT_VERSION)
 	-DENABLE_JAVA:BOOL=%{?with_java:ON}%{?!without_java:OFF} \
 	-DENABLE_LDAP:BOOL=%{?with_ldap:ON}%{?!without_ldap:OFF} \
 	-DENABLE_QRCODE:BOOL=%{?with_qrcode_support:ON}%{?!without_qrcode_support:OFF} \
-    -DENABLE_TOOLS:BOOL=%{?with_tools:ON}%{?!without_tools:OFF} \
+    -DENABLE_ROOTCA_DOWNLOAD:BOOL=OFF \
+	-DENABLE_TOOLS:BOOL=%{?with_tools:ON}%{?!without_tools:OFF} \
 	-DENABLE_UNIT_TESTS:BOOL=%{?with_tests:ON}%{?!without_tests:OFF} \
 	-DENABLE_UPDATE_CHECK:BOOL=OFF \
 	-DENABLE_ZRTP:BOOL=ON \
@@ -208,4 +209,7 @@ sed -i -e '/XSD_INT_VERSION/s/!=/</g' $(grep -r -l XSD_INT_VERSION)
 
 # FIXME: manually create plugin directory
 install -dm 0755 %{buildroot}%{_libdir}/%{name}/plugins
+
+# remove unused
+rm -f %{buildroot}%{_datadir}/linphone/rootca.pem
 
