@@ -3,9 +3,13 @@
 %define devname %mklibname linphone -d
 %define libname_linphonepp %mklibname linphone++
 
-# exclude unwanter cmake requires
+# exclude unwanted cmake provides
+%global __provides_exclude_from ^%{_datadir}/cmake/.*/Find.*cmake$
+
+# exclude unwanted cmake requires
 %global __requires_exclude cmake\\(openldap\\)|cmake\\(OpenLDAP\\) \
-	|cmake\\(tunnel\\)|cmake\\(Tunnel\\)
+	|cmake\\(tunnel\\)|cmake\\(Tunnel\\) \
+	|cmake\\(turbojpeg\\)|cmake\\(TurboJpeg\\)
 
 %bcond_without	console_ui
 %bcond_with	debug
@@ -22,7 +26,7 @@
 Summary:	Voice over IP Application
 Name:		liblinphone
 Version:	5.3.15
-Release:	2
+Release:	3
 License:	GPLv2+
 Group:		Communications
 URL:		http://www.linphone.org
@@ -209,6 +213,10 @@ sed -i -e '/XSD_INT_VERSION/s/!=/</g' $(grep -r -l XSD_INT_VERSION)
 
 # FIXME: manually create plugin directory
 install -dm 0755 %{buildroot}%{_libdir}/%{name}/plugins
+
+# remove already packaged cmake files
+rm -f %{buildroot}%{_datadir}/cmake/LibLinphone/FindSoci.cmake
+rm -f %{buildroot}%{_datadir}/cmake/LibLinphone/FindZXing.cmake
 
 # remove unused
 rm -f %{buildroot}%{_datadir}/linphone/rootca.pem
