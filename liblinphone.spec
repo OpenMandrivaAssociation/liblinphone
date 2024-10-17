@@ -29,7 +29,7 @@ Version:	5.3.49
 Release:	1
 License:	GPLv2+
 Group:		Communications
-URL:		http://www.linphone.org
+URL:		https://www.linphone.org
 Source0:	https://gitlab.linphone.org/BC/public/liblinphone/-/archive/%{version}/%{name}-%{version}.tar.bz2
 Patch0:		liblinphone-5.3.6-cmake-config-location.patch
 Patch1:		liblinphone-5.2.0-cmake-dont-use-bc_git_version.patch
