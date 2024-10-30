@@ -11,21 +11,21 @@
 	|cmake\\(tunnel\\)|cmake\\(Tunnel\\) \
 	|cmake\\(turbojpeg\\)|cmake\\(TurboJpeg\\)
 
-%bcond_without	console_ui
-%bcond_with	debug
-%bcond_without	db
-%bcond_with	example_plugins
-%bcond_with	java
-%bcond_with	ldap
-%bcond_without	qrcode_support
-%bcond_with	static
-%bcond_with	strict
-%bcond_with	tests
-%bcond_without tools
+%bcond console_ui		1
+%bcond debug			0
+%bcond db			1
+%bcond example_plugins		0
+%bcond java			0
+%bcond ldap			0
+%bcond qrcode_support		1
+%bcond strict			0
+%bcond tools			1
+%bcond unit_tests		1
+%bcond unit_tests_install	0
 
 Summary:	Voice over IP Application
 Name:		liblinphone
-Version:	5.3.93
+Version:	5.3.94
 Release:	1
 License:	GPLv2+
 Group:		Communications
@@ -75,15 +75,20 @@ BuildRequires:	xsd-devel
 Linphone is an open source SIP Phone, available on mobile and desktop
 environments.
 
-%if %{with tools}
 %files
 %license LICENSE.txt
+%if %{with tools}
 %doc README.md CHANGELOG.md NEWS
 %{_bindir}/liblinphone-auto-answer
+%{_bindir}/liblinphone-groupchat-benchmark
 %{_bindir}/liblinphone-lpc2xml-test
 %{_bindir}/liblinphone-sendmsg
 %{_bindir}/liblinphone-test-ecc
 %{_bindir}/liblinphone-xml2lpc-test
+%endif
+%if %{with unit_tests} && %{with unit_tests_install}
+%{_bindir}/%{name}-tester
+%{_datadir}/%{name}-tester/
 %endif
 
 #--------------------------------------------------------------------
@@ -189,7 +194,6 @@ sed -i -e '/XSD_INT_VERSION/s/!=/</g' $(grep -r -l XSD_INT_VERSION)
 
 %build
 %cmake \
-	-DENABLE_STATIC:BOOL=%{?with_static:ON}%{?!with_static:OFF} \
 	-DENABLE_STRICT:BOOL=%{?with_strict:ON}%{?!with_strict:OFF} \
 	-DENABLE_CONSOLE_UI:BOOL=%{?with_console_ui:ON}%{?!with_console_ui:OFF} \
 	-DENABLE_DAEMON:BOOL=YES \
@@ -202,7 +206,7 @@ sed -i -e '/XSD_INT_VERSION/s/!=/</g' $(grep -r -l XSD_INT_VERSION)
 	-DENABLE_QRCODE:BOOL=%{?with_qrcode_support:ON}%{?!with_qrcode_support:OFF} \
 	-DENABLE_ROOTCA_DOWNLOAD:BOOL=OFF \
 	-DENABLE_TOOLS:BOOL=%{?with_tools:ON}%{?!with_tools:OFF} \
-	-DENABLE_UNIT_TESTS:BOOL=%{?with_tests:ON}%{?!with_tests:OFF} \
+	-DENABLE_UNIT_TESTS:BOOL=%{?with_unit_tests:ON}%{?!with_unit_tests:OFF} \
 	-DENABLE_UPDATE_CHECK:BOOL=OFF \
 	-DENABLE_ZRTP:BOOL=ON \
 	-G Ninja
@@ -220,4 +224,17 @@ rm -f %{buildroot}%{_datadir}/cmake/LibLinphone/FindZXing.cmake
 
 # remove unused
 rm -f %{buildroot}%{_datadir}/linphone/rootca.pem
+
+# don't install unit tester
+%if %{with unit_tests} && ! %{with unit_tests_install}
+rm -f  %{buildroot}%{_bindir}/%{name}-tester
+rm -fr %{buildroot}%{_datadir}/%{name}-tester/
+%endif
+
+%check
+%if %{with unit_tests}
+pushd build
+ctest
+popd
+%endif
 
