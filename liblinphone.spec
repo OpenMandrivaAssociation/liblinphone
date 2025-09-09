@@ -25,7 +25,7 @@
 
 Summary:	Voice over IP Application
 Name:		liblinphone
-Version:	5.4.20
+Version:	5.4.42
 Release:	1
 License:	GPLv2+
 Group:		Communications
