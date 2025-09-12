@@ -11,7 +11,7 @@
 	|cmake\\(tunnel\\)|cmake\\(Tunnel\\) \
 	|cmake\\(turbojpeg\\)|cmake\\(TurboJpeg\\)
 
-%bcond console_ui		1
+%bcond console_ui		0
 %bcond debug			0
 %bcond db			1
 %bcond example_plugins		0
@@ -20,7 +20,7 @@
 %bcond qrcode_support		1
 %bcond strict			0
 %bcond tools			1
-%bcond unit_tests		1
+%bcond unit_tests		0
 %bcond unit_tests_install	0
 
 Summary:	Voice over IP Application
@@ -31,14 +31,6 @@ License:	GPLv2+
 Group:		Communications
 URL:		https://www.linphone.org
 Source0:	https://gitlab.linphone.org/BC/public/liblinphone/-/archive/%{version}/%{name}-%{version}.tar.bz2
-Patch0:		liblinphone-5.3.6-cmake-config-location.patch
-Patch1:		liblinphone-5.2.0-cmake-dont-use-bc_git_version.patch
-Patch2:		liblinphone-5.2.0-fix-pkgconfig.patch
-Patch3:		liblinphone-5.3.15-use_system_rootca.patch
-Patch4:		liblinphone-5.3.6-fix_compiler_strict-prototypes_warinig.patch
-Patch5:		liblinphone-5.3.6-fix_clang.patch
-Patch6:		liblinphone-5.3.15-add_jsoncpp_dep.patch
-
 BuildRequires:	cmake
 BuildRequires:	ninja
 BuildRequires:	doxygen
@@ -71,6 +63,15 @@ BuildRequires:	soci-devel
 %endif
 BuildRequires:	xsd-devel
 
+%patchlist
+liblinphone-5.3.6-cmake-config-location.patch
+liblinphone-5.2.0-cmake-dont-use-bc_git_version.patch
+liblinphone-5.4.42-fix-pkgconfig.patch
+liblinphone-5.3.15-use_system_rootca.patch
+#liblinphone-5.3.6-fix_compiler_strict-prototypes_warinig.patch
+#liblinphone-5.3.6-fix_clang.patch
+liblinphone-5.3.15-add_jsoncpp_dep.patch
+
 %description
 Linphone is an open source SIP Phone, available on mobile and desktop
 environments.
@@ -80,7 +81,7 @@ environments.
 %if %{with tools}
 %doc README.md CHANGELOG.md NEWS
 %{_bindir}/liblinphone-auto-answer
-%{_bindir}/liblinphone-groupchat-benchmark
+#{_bindir}/liblinphone-groupchat-benchmark
 %{_bindir}/liblinphone-lpc2xml-test
 %{_bindir}/liblinphone-sendmsg
 %{_bindir}/liblinphone-test-ecc
@@ -190,7 +191,7 @@ Libraries and includes files for developing programs based on linphone.
 rm -rf libxsd
 
 # Fix XSD runtime version mismatch
-sed -i -e '/XSD_INT_VERSION/s/!=/</g' $(grep -r -l XSD_INT_VERSION)
+#sed -i -e '/XSD_INT_VERSION/s/!=/</g' $(grep -r -l XSD_INT_VERSION)
 
 %build
 %cmake \
