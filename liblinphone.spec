@@ -25,12 +25,12 @@
 
 Summary:	Voice over IP Application
 Name:		liblinphone
-Version:	5.4.121
+Version:	5.4.124
 Release:	1
 License:	GPLv2+
 Group:		Communications
 URL:		https://www.linphone.org
-Source0:	https://gitlab.linphone.org/BC/public/liblinphone/-/archive/%{version}/%{name}-%{version}.tar.bz2
+Source0:	https://github.com/BelledonneCommunications/liblinphone/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:	cmake
 BuildRequires:	ninja
 BuildRequires:	doxygen

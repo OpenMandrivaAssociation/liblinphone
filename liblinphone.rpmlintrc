@@ -1,2 +1,3 @@
-# false positive
-addFilter("E: devel-file-in-non-devel-package")
+# false positives
+addFilter("devel-file-in-non-devel-package")
+addFilter("lib-package-without-%mklibname")
